@@ -1,0 +1,49 @@
+<idea-plugin>
+  <id>com.ruijie.shamee.gitcheck.plugin.id</id>
+  <name>GitCC</name>
+  <version>1.0</version>
+  <vendor email="pengyaohuang@ruijie.com.cn" url="https://fw.ruijie.com.cn">pengyaohuang</vendor>
+
+  <description><![CDATA[
+    It is used to check whether the code has completed Git commit upload every day to avoid forgetting to commit the code.
+    Scope of application: R&D personnel.
+    ]]></description>
+
+  <change-notes><![CDATA[
+    It is used to check whether the code has completed Git commit upload every day to avoid forgetting to commit the code.
+    Scope of application: R&D personnel.
+    ]]>
+  </change-notes>
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow
+            factoryClass="com.ruijie.shamee.gitcc.window.GitCCRepositoryWindowFactory"
+            id="GitCC"
+            anchor="right"
+            icon="/icon/logo.png"
+    />
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="GitRepositoryAction_ID" class="com.ruijie.shamee.gitcc.action.GitRepositoryAction"
+            text="GitCC" description="配置用于检查git提交记录的仓库">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl G"/>
+    </action>
+  </actions>
+
+  <application-components>
+    <component>
+      <implementation-class>com.ruijie.shamee.gitcc.component.GitCCApplicationComponent</implementation-class>
+    </component>
+  </application-components>
+
+</idea-plugin>
